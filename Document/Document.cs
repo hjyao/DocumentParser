@@ -35,19 +35,34 @@ namespace Document
             }
         }
 
-        private static string Accept(HyperLink hyperLink)
+        private static string Accept(PlainText plainText)
         {
-            return string.Format("<a href='{0}'>{1}</a>", hyperLink.Url, hyperLink.Text);
+            return VisitPlainText(plainText);
         }
 
         private static string Accept(BoldText boldText)
         {
+            return VisitBoldText(boldText);
+        }
+
+        private static string Accept(HyperLink hyperLink)
+        {
+            return VisitHyperLink(hyperLink);
+        }
+
+        private static string VisitPlainText(PlainText plainText)
+        {
+            return plainText.Text;
+        }
+
+        private static string VisitBoldText(BoldText boldText)
+        {
             return string.Format("<b>{0}</b>", boldText.Text);
         }
 
-        private static string Accept(PlainText plainText)
+        private static string VisitHyperLink(HyperLink hyperLink)
         {
-            return plainText.Text;
+            return string.Format("<a href='{0}'>{1}</a>", hyperLink.Url, hyperLink.Text);
         }
     }
 }
