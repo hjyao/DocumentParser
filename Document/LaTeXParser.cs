@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Document
 {
-    public class LaTeXParser
+    public class LaTeXParser : IDocumentVisitor
     {
         public List<DocumentPart> DocumentParts { get; set; }
 
