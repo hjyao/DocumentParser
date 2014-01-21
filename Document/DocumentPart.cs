@@ -8,6 +8,7 @@
         }
 
         public string Text { get; private set; }
-        public abstract string Accept(Document document);
+        public abstract string Accept(HtmlParser htmlParser);
+        public abstract string Accept(LaTeXParser laTeXParser);
     }
 }
