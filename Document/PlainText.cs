@@ -6,7 +6,7 @@
         {
         }
 
-        public string Accept(Document document)
+        public override string Accept(Document document)
         {
             return document.VisitPlainText(this);
         }

@@ -8,5 +8,6 @@
         }
 
         public string Text { get; private set; }
+        public abstract string Accept(Document document);
     }
 }

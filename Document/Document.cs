@@ -21,18 +21,7 @@ namespace Document
 
         private string GetHtml(DocumentPart documentPart)
         {
-            if (documentPart is PlainText)
-            {
-                return (documentPart as PlainText).Accept(this);
-            }
-            else if (documentPart is BoldText)
-            {
-                return (documentPart as BoldText).Accept(this);
-            }
-            else
-            {
-                return (documentPart as HyperLink).Accept(this);
-            }
+            return documentPart.Accept(this);
         }
 
         public string VisitPlainText(PlainText plainText)

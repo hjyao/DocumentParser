@@ -8,5 +8,10 @@
         }
 
         public string Url { get; private set; }
+
+        public override string Accept(Document document)
+        {
+            return document.VisitHyperLink(this);
+        }
     }
 }
