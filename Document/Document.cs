@@ -23,17 +23,31 @@ namespace Document
         {
             if (documentPart is PlainText)
             {
-                return (documentPart as PlainText).Text;
+                return Accept(documentPart as PlainText);
             }
             else if (documentPart is BoldText)
             {
-                return string.Format("<b>{0}</b>", (documentPart as BoldText).Text);
+                return Accept(documentPart as BoldText);
             }
             else
             {
-                var hyperLink = (documentPart as HyperLink);
-                return string.Format("<a href='{0}'>{1}</a>", hyperLink.Url, hyperLink.Text);
+                return Accept(documentPart as HyperLink);
             }
+        }
+
+        private static string Accept(HyperLink hyperLink)
+        {
+            return string.Format("<a href='{0}'>{1}</a>", hyperLink.Url, hyperLink.Text);
+        }
+
+        private static string Accept(BoldText boldText)
+        {
+            return string.Format("<b>{0}</b>", boldText.Text);
+        }
+
+        private static string Accept(PlainText plainText)
+        {
+            return plainText.Text;
         }
     }
 }
