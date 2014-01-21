@@ -23,44 +23,29 @@ namespace Document
         {
             if (documentPart is PlainText)
             {
-                return Accept(documentPart as PlainText);
+                return (documentPart as PlainText).Accept(this);
             }
             else if (documentPart is BoldText)
             {
-                return Accept(documentPart as BoldText);
+                return (documentPart as BoldText).Accept(this);
             }
             else
             {
-                return Accept(documentPart as HyperLink);
+                return (documentPart as HyperLink).Accept(this);
             }
         }
 
-        private static string Accept(PlainText plainText)
-        {
-            return VisitPlainText(plainText);
-        }
-
-        private static string Accept(BoldText boldText)
-        {
-            return VisitBoldText(boldText);
-        }
-
-        private static string Accept(HyperLink hyperLink)
-        {
-            return VisitHyperLink(hyperLink);
-        }
-
-        private static string VisitPlainText(PlainText plainText)
+        public string VisitPlainText(PlainText plainText)
         {
             return plainText.Text;
         }
 
-        private static string VisitBoldText(BoldText boldText)
+        public string VisitBoldText(BoldText boldText)
         {
             return string.Format("<b>{0}</b>", boldText.Text);
         }
 
-        private static string VisitHyperLink(HyperLink hyperLink)
+        public string VisitHyperLink(HyperLink hyperLink)
         {
             return string.Format("<a href='{0}'>{1}</a>", hyperLink.Url, hyperLink.Text);
         }
