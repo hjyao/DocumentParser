@@ -41,10 +41,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BoldText.cs" />
-    <Compile Include="HtmlParser.cs" />
+    <Compile Include="Document.cs" />
     <Compile Include="DocumentPart.cs" />
     <Compile Include="HyperLink.cs" />
-    <Compile Include="LaTeXParser.cs" />
     <Compile Include="PlainText.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

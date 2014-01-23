@@ -3,9 +3,9 @@ using System.Linq;
 
 namespace Document
 {
-    public class HtmlParser
+    public class Document
     {
-        public HtmlParser(params DocumentPart[] documentParts)
+        public Document(params DocumentPart[] documentParts)
         {
             DocumentParts = documentParts.ToList();
         }

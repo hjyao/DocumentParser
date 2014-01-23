@@ -9,14 +9,9 @@
 
         public string Url { get; private set; }
 
-        public override string Accept(HtmlParser htmlParser)
+        public override string Accept(Document document)
         {
-            return htmlParser.VisitHyperLink(this);
-        }
-
-        public override string Accept(LaTeXParser laTeXParser)
-        {
-            return laTeXParser.VisitHyperLink(this);
+            return document.VisitHyperLink(this);
         }
     }
 }
