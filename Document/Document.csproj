@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="BoldText.cs" />
     <Compile Include="Document.cs" />
+    <Compile Include="HtmlVisitor.cs" />
     <Compile Include="DocumentPart.cs" />
     <Compile Include="HyperLink.cs" />
     <Compile Include="PlainText.cs" />

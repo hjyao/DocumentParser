@@ -11,7 +11,7 @@ namespace DocumentTest
             var plainText = new PlainText("I am plain text");
             var document = new Document.Document(plainText);
 
-            string html = document.ToHtml();
+            string html = document.ToHtml(new HtmlVisitor());
 
             Assert.Equal("I am plain text", html);
         }
@@ -22,7 +22,7 @@ namespace DocumentTest
             var boldText = new BoldText("I am bold text");
             var document = new Document.Document(boldText);
 
-            string html = document.ToHtml();
+            string html = document.ToHtml(new HtmlVisitor());
 
             Assert.Equal("<b>I am bold text</b>", html);
         }
@@ -33,7 +33,7 @@ namespace DocumentTest
             var hyperLink = new HyperLink("I am hyperlink", "http://www.visitor.com");
             var document = new Document.Document(hyperLink);
 
-            string html = document.ToHtml();
+            string html = document.ToHtml(new HtmlVisitor());
 
             Assert.Equal("<a href='http://www.visitor.com'>I am hyperlink</a>", html);
         }

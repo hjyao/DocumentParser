@@ -12,31 +12,11 @@ namespace Document
 
         public List<DocumentPart> DocumentParts { get; set; }
 
-        public string ToHtml()
+        public string ToHtml(HtmlVisitor visitor)
         {
             string output = "";
-            DocumentParts.ForEach(p => { output += GetHtml(p); });
+            DocumentParts.ForEach(p => { output += p.Accept(visitor); });
             return output;
-        }
-
-        private string GetHtml(DocumentPart documentPart)
-        {
-            return documentPart.Accept(this);
-        }
-
-        public string VisitPlainText(PlainText plainText)
-        {
-            return plainText.Text;
-        }
-
-        public string VisitBoldText(BoldText boldText)
-        {
-            return string.Format("<b>{0}</b>", boldText.Text);
-        }
-
-        public string VisitHyperLink(HyperLink hyperLink)
-        {
-            return string.Format("<a href='{0}'>{1}</a>", hyperLink.Url, hyperLink.Text);
         }
     }
 }
