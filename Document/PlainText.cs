@@ -6,9 +6,14 @@
         {
         }
 
-        public override string Accept(IDocumentVisitor htmlParser)
+        public override string Accept(HtmlParser htmlParser)
         {
             return htmlParser.VisitPlainText(this);
+        }
+
+        public override string Accept(LaTeXParser laTeXParser)
+        {
+            return laTeXParser.VisitPlainText(this);
         }
     }
 }

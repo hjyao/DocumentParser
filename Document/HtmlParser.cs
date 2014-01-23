@@ -3,14 +3,7 @@ using System.Linq;
 
 namespace Document
 {
-    public interface IDocumentVisitor
-    {
-        string VisitPlainText(PlainText plainText);
-        string VisitBoldText(BoldText boldText);
-        string VisitHyperLink(HyperLink hyperLink);
-    }
-
-    public class HtmlParser : IDocumentVisitor
+    public class HtmlParser
     {
         public HtmlParser(params DocumentPart[] documentParts)
         {
