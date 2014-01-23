@@ -46,6 +46,7 @@
     <Compile Include="DocumentPart.cs" />
     <Compile Include="HyperLink.cs" />
     <Compile Include="IVisitor.cs" />
+    <Compile Include="MarkdownVisitor.cs" />
     <Compile Include="PlainText.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
