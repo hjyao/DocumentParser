@@ -9,7 +9,7 @@
 
         public string Url { get; private set; }
 
-        public override string Accept(HtmlVisitor document)
+        public override string Accept(IVisitor document)
         {
             return document.VisitHyperLink(this);
         }

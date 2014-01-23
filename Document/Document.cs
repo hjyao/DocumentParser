@@ -12,7 +12,7 @@ namespace Document
 
         public List<DocumentPart> DocumentParts { get; set; }
 
-        public string ToHtml(HtmlVisitor visitor)
+        public string Accept(IVisitor visitor)
         {
             string output = "";
             DocumentParts.ForEach(p => { output += p.Accept(visitor); });

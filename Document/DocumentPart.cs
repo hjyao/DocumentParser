@@ -8,6 +8,6 @@
         }
 
         public string Text { get; private set; }
-        public abstract string Accept(HtmlVisitor document);
+        public abstract string Accept(IVisitor document);
     }
 }

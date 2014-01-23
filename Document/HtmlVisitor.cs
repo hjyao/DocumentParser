@@ -1,6 +1,6 @@
 ﻿namespace Document
 {
-    public class HtmlVisitor
+    public class HtmlVisitor : IVisitor
     {
         public string VisitPlainText(PlainText plainText)
         {

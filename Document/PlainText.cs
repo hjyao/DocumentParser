@@ -6,7 +6,7 @@
         {
         }
 
-        public override string Accept(HtmlVisitor document)
+        public override string Accept(IVisitor document)
         {
             return document.VisitPlainText(this);
         }
