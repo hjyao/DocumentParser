@@ -19,13 +19,15 @@ Vistor pattern:
 重构步骤：
 1.在if中抽取Accept（documentPart）方法，将Text改成对应的documentPart类型，然后在调用端强转成对应的DocumentPart类型，rename params,对于强转的类型，可以提成参数再删掉之前的参数来做；依次应用之；
 2.在accept（）中再次抽取方法，VisitTextNode（）；依次应用之；
-3.将accept（）移到对应的DocumentPart类中(让其接收Document类，大家试试好方法)，           将accept和visit手动public=>去掉static，再将accept搞成static，再non-static；
-4.我们希望的是document.Accept(this),不要强转，怎么办呢？将accept（）推到Document类中；做法：在PlainText的Accept（）方法上应用 pull member up，make method abstract；然后fix其他两个子类成override；      修改Document，使其动态调用accept（）===>>只剩document.Accept(this); 
-5.看这个Document类呢，包含了三个Visit方法，职责不够单一，单搞个HtmlVisitor会更好====在ToHtml（）中抽个参数出来，HtmlVisitor包含三个visit方法。
+3.将accept（）移到对应的DocumentPart类中(让其接收Document类，大家试试好方法)，将accept和visit手动public=>去掉static，再将accept搞成static，再non-static；
+4.我们希望的是document.Accept(this),不要强转，怎么办呢？
+将accept（）推到Document类中；做法：在PlainText的Accept（）方法上应用 pull member up，make method abstract；然后fix其他两个子类成override；修改Document，使其动态调用accept（）;只剩document.Accept(this); 
+5.看这个Document类呢，包含了三个Visit方法，职责不够单一，单搞个HtmlVisitor会更好.
+  在ToHtml（）中抽个参数出来，HtmlVisitor包含三个visit方法。
 6.新需求来了=>>>>>ToMarkDown:
-  对于plainText==  text；                                                                            
-  对于boldText== _text_;                                                                               
-  对于HyperLink== [text](url);                                                             
+  对于plainText==  text；
+  对于boldText== _text_;
+  对于HyperLink== [text](url);
   势必要加个MarkDownVisitor，会有重复代码，更重要的呢，我们希望隔离Document类和Visitor访问端，
   Document并不需要知道那个Visitor.  抽个IVisitor，use base if possible.
 7.加新的需求，先加个BoldText的测试，driven下.
